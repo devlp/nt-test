@@ -1,0 +1,76 @@
+<div class="row" *ngIf="dragon">
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="onSave()">
+    <div class="card-panel hoverable">
+      <div class="card-stacked">
+        <div class="card-content">
+          <h5>{{ title }}</h5>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="name" type="text" class="validate"
+                [(ngModel)]="dragon.name" formControlName="name"
+                [class.invalid]="form.controls['name'].touched && !form.controls['name'].valid">
+              <label for="name" [class.active]="dragon.name"
+                data-error="You need to enter at least 3 chars">
+                Name
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">opacity</i>
+              <input id="type" type="text" class="validate"
+                [(ngModel)]="dragon.type" formControlName="type"
+                [class.invalid]="form.controls['type'].touched && !form.controls['type'].valid">
+              <label for="type" [class.active]="dragon.type"
+                data-error="You need to enter at least 3 chars">
+                Type
+              </label>
+            </div>
+          </div>
+          <div class="row" *ngIf="!isNew">
+            <div class="input-field col s12">
+              <i class="material-icons prefix active">today</i>
+              <input id="created_at" type="text" class="validate" readonly="readonly" disabled="disabled"
+                [(ngModel)]="dragon.created_at" formControlName="created_at"
+                [class.invalid]="form.controls['created_at'].touched">
+              <label for="type" [class.active]="dragon.created_at"
+                data-error="You are not allowed to change that.">
+                Created At
+              </label>
+            </div>
+          </div>
+          <div class="row" *ngIf="dragon?.histories?.length == 0">
+            <div (click)="addItemHistory()" class="waves-effect waves-light btn red col s4">
+              <i class="material-icons right prefix">add</i> Add History
+            </div>
+          </div>
+          <div class="row" formArrayName="histories" *ngFor="let hist of form.get('histories').controls; let index = index" [attr.data-index]="index">
+            <div class="input-field col s10">
+              <i class="material-icons prefix">filter_{{ index+1 <=9 ? index+1 : '9_plus' }}</i>
+              <textarea [id]="index" [name]="index" class="materialize-textarea validate"
+                [class.invalid]="form.get('histories').controls.touched && !form.get('histories').controls.valid"
+                [formControlName]="index" [(ngModel)]="dragon?.histories[index]"></textarea>
+              <label [for]="index" [class.active]="hist" data-error="There is no history for this creature?!">{{ index+1 }}) Hist</label>
+            </div>
+            <div (click)="deleteItemHistory(index)" class="inline-btn btn waves-effect waves-light red col s1">
+              <i class="material-icons prefix">clear</i>
+            </div>
+            <div (click)="addItemHistory()" class="inline-btn btn waves-effect waves-light green col s1">
+              <i class="material-icons prefix">add</i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <br/>
+              <button class="btn waves-effect waves-light green" type="submit"
+                [disabled]="!form.valid">Submit<i class="material-icons right">send</i>
+              </button>
+              <a class="waves-effect waves-light btn red" (click)="onCancel()">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

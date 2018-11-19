@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel hoverable">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>
+            Displaying {{ dragons.length }} dragons.
+          </p>
+
+          <div class="collection">
+            <app-dragon-list-item
+              *ngFor="let dragon of dragons"
+              [dragon]="dragon">
+            </app-dragon-list-item>
+
+            <div class="row padLeft20">
+              <ul *ngIf="page.pages && page.pages.length" class="customPagination">
+                <li [ngClass]="{disabled:page.currentPage === 1}" (click)="list(1)">
+                  <span>First</span>
+                </li>
+                <li [ngClass]="{disabled:page.currentPage === 1}" (click)="list(page.currentPage - 1)">
+                  <span>Previous</span>
+                </li>
+                <li *ngFor="let pag of page.pages" [ngClass]="{active:page.currentPage === pag}" (click)="list(pag)">
+                  <span>{{pag}}</span>
+                </li>
+                <li [ngClass]="{disabled:page.currentPage === page.totalPages}" (click)="list(page.currentPage + 1)">
+                  <span>Next</span>
+                </li>
+                <li [ngClass]="{disabled:page.currentPage === page.totalPages}" (click)="list(page.totalPages)">
+                  <span>Last</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large waves-effect waves-light green"
+     routerLink="new">
+    <i class="material-icons">add</i>
+  </a>
+</div>

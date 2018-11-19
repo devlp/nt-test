@@ -1,0 +1,59 @@
+.customPagination>li>a,
+.customPagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.customPagination>.disabled>a,
+.customPagination>.disabled>a:focus,
+.customPagination>.disabled>a:hover,
+.customPagination>.disabled>span,
+.customPagination>.disabled>span:focus,
+.customPagination>.disabled>span:hover {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+.customPagination>.active>a,
+.customPagination>.active>a:focus,
+.customPagination>.active>a:hover,
+.customPagination>.active>span,
+.customPagination>.active>span:focus,
+.customPagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+.customPagination>li>a:focus,
+.customPagination>li>a:hover,
+.customPagination>li>span:focus,
+.customPagination>li>span:hover {
+    z-index: 2;
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.customPagination>li>a,
+.customPagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}

@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel hoverable">
+      <div class="card-stacked">
+        <div class="card-content">
+          <div *ngIf="showMore" (click)="showMore=false" class="right"><a class="waves-effect waves-light btn purple"><i class="material-icons left">expand_less</i>Show Less</a></div>
+          <div *ngIf="!showMore" (click)="showMore=true" class="right"><a class="waves-effect waves-light btn purple"><i class="material-icons left">expand_more</i>Show More</a></div>
+          <h4>Dragon details:</h4>
+          <p><span class="bold">Name:</span> {{ selectedDragon?.name }}</p>
+          <p><span class="bold">Type:</span> {{ selectedDragon?.type }}</p>
+          <p><span class="bold">Created At:</span> {{ selectedDragon?.created_at }}</p>
+          <div *ngIf="showMore">
+            <p><span class="bold">_id:</span> {{ selectedDragon?._id }}</p>
+            <p><span class="bold">Slug:</span> {{ selectedDragon?.slug }}</p>
+            <p><span class="bold">Histories:</span></p>
+            <p *ngFor="let hist of selectedDragon?.histories; let i = index" class="truncate">
+              {{ i+1 }}) {{ hist }}
+            </p>
+            <p *ngIf="selectedDragon?.histories?.length === 0">
+              *NO RECORDS FOUND* - There's no record or a single person who reminds this creature.
+            </p>
+          </div>
+        </div>
+        <div class="card-action">
+          <a class="waves-effect waves-light btn"
+            (click)="onEdit()">
+            <i class="material-icons left">mode_edit</i>Edit
+          </a>
+          <a class="waves-effect waves-light btn red"
+            (click)="onDelete()">
+            <i class="material-icons left">delete</i>Remove
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

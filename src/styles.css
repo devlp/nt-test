@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/materialize-css/dist/css/materialize.css";
+.bold {
+    font-weight: bold;
+}
+.padLeft20 {
+    padding-left:20px;
+}
+
+textarea.materialize-textarea {
+    overflow-y: auto;
+    resize: vertical;
+    min-height: 3px;
+    padding: .8rem 0 0 0;
+}

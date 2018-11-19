@@ -1,0 +1,6 @@
+<div *ngFor="let message of messages; let btIndex = index" class="alert alert-{{message.type}}" role="alert">
+  {{message.text}}
+  <button type="button" class="close" (click)="removeAlert(btIndex)" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
